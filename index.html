@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="jurassic-park-icon.svg" type="image/svg+xml" />
+    <title>JURSTATIC PARK</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="loading-bar.css">
+</head>
+<body>
+    <canvas id="webgl" class="hidden"></canvas>
+
+    <div id="crosshair" class="hidden">+</div>
+
+    <!-- PERSISTENT AUDIO CONTROL (Top Right) -->
+    <!-- Added this so the Music Mute feature works -->
+    <div id="audio-controls" class="hidden">
+        <button id="btn-mute-music" class="icon-btn">MUSIC: ON</button>
+    </div>
+
+    <!-- DISCLAIMER SCREEN (First thing user sees) -->
+    <div id="disclaimer-screen">
+        <div class="warning-box">
+            <h2>DISCLAIMER</h2>
+            <div class="scan-line-small"></div>
+            <p>
+                The biological assets displayed in this simulation are only
+                <span class="highlight">VISUAL REPRESENTATIONS</span> used for scale reference.
+            </p>
+            <p>
+                While the biological data is based on current scientific research, the models and depictions of these prehistoric creatures are completely fictional.
+            </p>
+            <br>
+            <!-- Added small hint so user knows sound is coming -->
+            <p style="font-size: 0.8rem; color: #666;">AUDIO OUTPUT INITIALIZED</p>
+            
+            <button id="btn-acknowledge" class="brutal-btn">ACKNOWLEDGE & PROCEED</button>
+        </div>
+    </div>
+
+    <!-- TITLE SCREEN -->
+    <div id="title-screen" class="hidden">
+        <div class="grid-bg"></div>
+        <div class="title-container">
+            <div class="top-bar">SYSTEM_READY</div>
+            <h1>JURSTATIC<br>PARK</h1>
+            <p>ISLA NUBLAR // SITE B</p>
+            
+            <div class="menu">
+                <button id="btn-start" class="brutal-btn">ENTER_SIMULATION</button>
+                <button id="btn-settings-title" class="brutal-btn outline">CONFIG</button>
+            </div>
+            
+            <div class="bottom-data">
+                <span>V.2.6</span>
+                <span>SECURE_CONNECTION</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- SETTINGS MODAL -->
+    <div id="settings-modal" class="hidden">
+        <div class="modal-backdrop"></div>
+        <div class="brutal-box">
+            <div class="box-header">
+                <h2>SYSTEM_CONFIG</h2>
+                <div class="deco-box"></div>
+            </div>
+            <div class="setting-row">
+                <label>RENDER QUALITY</label>
+                <div class="select-wrapper">
+                    <select id="set-quality">
+                        <option value="low">LOW [PERFORMANCE]</option>
+                        <option value="medium" selected>MEDIUM [BALANCED]</option>
+                        <option value="high">HIGH [CINEMATIC]</option>
+                    </select>
+                </div>
+            </div>
+            <div class="setting-row">
+                <label>SHADOWS</label>
+                <button id="toggle-shadows" class="toggle-btn active">ENABLED</button>
+            </div>
+            <button id="btn-close-settings" class="brutal-btn full">APPLY CHANGES</button>
+        </div>
+    </div>
+    
+
+    <!-- HUD / UI -->
+    <div id="ui-container" class="hidden">
+        <div id="nav-panel">
+            <div class="panel-header">
+                <h3>DATABASE</h3>
+                <div class="status-light"></div>
+            </div>
+            <ul id="dino-list"></ul>
+            
+            
+            <ul id="dino-list"></ul>
+            <div class="panel-controls">
+                <button id="toggle-roam" class="hud-btn">FREE ROAM</button>
+                <button id="btn-open-settings-game" class="hud-btn small">OPTIONS</button>
+                <button id="btn-exit" class="hud-btn" style="margin-bottom: 10px; border-color: #ff3333; color: #ff3333;" onclick="window.location.href='index.html';">
+                    BACK TO MENU
+                </button>
+            </div>
+        </div>
+
+        <div id="info-card" class="hidden">
+            <div class="card-content">
+                <h1 id="dino-name">TYRANNOSAURUS</h1>
+                <h3 id="dino-sci" class="sci-name">Tyrannosaurus Rex</h3>
+                <div class="data-grid">
+                    <div class="data-item">
+                        <span class="label">HEIGHT</span>
+                        <span id="dino-height" class="value">5.0m</span>
+                    </div>
+                    <div class="data-item">
+                        <span class="label">DIET</span>
+                        <span id="dino-diet" class="value">CARNIVORE</span>
+                    </div>
+                </div>
+                <p id="dino-desc">Description data...</p>
+            </div>
+            <div class="card-deco"></div>
+        </div>
+        
+        <div id="instructions">WASD: MOVE // V : DOWN // C : UP</div>
+    </div>
+
+    <div id="loading-overlay" class="hidden">
+        <div class="loading-content">
+            <div id="loading-text">INITIALIZING...</div>
+            <div id="loading-bar-container"><div id="loading-bar"></div></div>
+        </div>
+    </div>
+
+    <script type="module" src="/main.js"></script>
+</body>
+</html>
