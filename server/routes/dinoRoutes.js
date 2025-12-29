@@ -6,6 +6,6 @@ const { getDinosaurs, seedDatabase } = require('../controllers/dinoController');
 router.get('/', getDinosaurs);
 
 // When user sends POST to /api/dinosaurs/seed
-router.post('/seed', seedDatabase);
+router.get('/seed', seedDatabase);
 
 module.exports = router;
